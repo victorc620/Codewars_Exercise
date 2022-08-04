@@ -58,7 +58,7 @@ object kyu5_DirReduction extends App {
 
     val directionPair = Map("NORTH" -> "SOUTH", "EAST" -> "WEST", "SOUTH" -> "NORTH", "WEST" -> "EAST")
 
-    if (arr.isEmpty) arr
+    if (arr.isEmpty) latestList
     else if (arr.length == 1) latestList :+ arr.head
     else if (directionPair(arr.head) == arr(1)) listConstructor(Array(), latestList ++ arr.drop(2))
     else listConstructor(latestList :+ arr.head, arr.drop(1))
@@ -68,7 +68,4 @@ object kyu5_DirReduction extends App {
     val validArr: Array[String] = arrValidityCheck(arr)
     listConstructor(arr = validArr)
   }
-
-  println(dirReduc(Array("NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST")).mkString(", "))
-
 }
