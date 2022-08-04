@@ -54,16 +54,15 @@ object kyu5_DirReduction extends App {
     )
   }
 
-  // IGNORE THIS Function, question interpreted incorrectly
-//  def listConstructor(newList: Array[String] = Array[String](), arr: Array[String]): Array[String] = {
-//
-//    val directionPair = Map("NORTH" -> "SOUTH", "EAST" -> "WEST", "SOUTH" -> "NORTH", "WEST" -> "EAST")
-//
-//    if (arr.isEmpty) newList
-//    else if (arr.length == 1) newList :+ arr.head
-//    else if (directionPair(arr.head) == arr(1)) listConstructor(newList, arr.drop(2))
-//    else listConstructor(newList :+ arr.head, arr.drop(1))
-//  }
+  def listConstructor(latestList: Array[String] = Array[String](), arr: Array[String]): Array[String] = {
+
+    val directionPair = Map("NORTH" -> "SOUTH", "EAST" -> "WEST", "SOUTH" -> "NORTH", "WEST" -> "EAST")
+
+    if (arr.isEmpty) arr
+    else if (arr.length == 1) latestList :+ arr.head
+    else if (directionPair(arr.head) == arr(1)) listConstructor(Array(), latestList ++ arr.drop(2))
+    else listConstructor(latestList :+ arr.head, arr.drop(1))
+  }
 
   def dirReduc(arr: Array[String]): Array[String] = {
     val validArr: Array[String] = arrValidityCheck(arr)
