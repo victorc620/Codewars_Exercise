@@ -43,6 +43,7 @@ object kyu5_DirReduction extends App {
   become such. Hence the result path is itself : ["NORTH", "WEST", "SOUTH", "EAST"].
    */
 
+  // Throw exception if the string contains invalid direction
   def arrValidityCheck(arr: Array[String]): Array[String] = {
 
     val validDirection = Array("North", "East", "South", "West")
